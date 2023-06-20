@@ -1,0 +1,14 @@
+<%- include('./components/container/head.ejs') %>
+  <header>
+    <h1>Register Glucosa</h1>
+  </header>
+  <ul>
+    <% users.forEach(function(user){ %>
+      <h1><%- user.fecha %></h1>
+      <p><%- user.nivelazucar1 %></p>
+      <p><%- user.medicamento1 %></p>
+      <p><%- user.nivelazucar2 %></p>
+      <p><%- user.medicamento2 %></p>
+    <% }); %>
+  </ul>
+<%- include('./components/container/footer.ejs') %>
