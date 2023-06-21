@@ -2,8 +2,8 @@
   <header>
     <h1>Register Glucosa</h1>
   </header>
-  <ul>
-    <% users.forEach(function(user){ %>
+  <ul class="ul-container">
+    <% users.map(function(user){ %>
       <h1><%- user.fecha %></h1>
       <p><%- user.nivelazucar1 %></p>
       <p><%- user.medicamento1 %></p>
@@ -11,4 +11,5 @@
       <p><%- user.medicamento2 %></p>
     <% }); %>
   </ul>
+  <script src="/index.js"></script>
 <%- include('./components/container/footer.ejs') %>

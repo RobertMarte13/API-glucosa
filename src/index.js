@@ -1,8 +1,13 @@
-const express = require('express')
-const morgan = require('morgan')
-const path = require('path')
-require('ejs')
-const indexRouter = require('./routes/index.routes.js')
+import express from 'express'
+import morgan from 'morgan'
+import path from 'path'
+import 'ejs'
+import indexRouter from './routes/index.routes.js'
+import { fileURLToPath } from 'url'
+import { PORT } from './config.js'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express()
 
@@ -21,5 +26,5 @@ app.use(indexRouter)
 // Rutas publicas
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.listen(3000)
-console.log(`Server ${app.get('appName')} listo en el puerto 3000`)
+app.listen(PORT)
+console.log(`Server ${app.get('appName')} listo en el puerto ${PORT}`)

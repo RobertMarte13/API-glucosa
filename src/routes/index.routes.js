@@ -1,12 +1,14 @@
-const { Router } = require("express");
-const pool = require("../db.js");
+import { Router } from "express"
+import pool from "../db.js"
 
 const router = Router();
+
+
 
 // Esta ruta devuelve toda la informacion
 router.get("/", async (req, res) => {
   const [rows] = await pool.query("SELECT * FROM glucosa");
-  res.render("index", { users: rows });
+  res.render("index", { users: rows })
 });
 
 // Esta Es lo mismo que la re arriba solo que funciona para mostrar cuando acceda a esta ruta
@@ -61,4 +63,4 @@ router.delete("/register/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
