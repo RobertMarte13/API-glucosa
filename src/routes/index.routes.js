@@ -8,20 +8,20 @@ const router = Router();
 // Esta ruta devuelve toda la informacion
 router.get("/", async (req, res) => {
   const [rows] = await pool.query("SELECT * FROM glucosa");
-  res.render("index", { users: rows })
+  res.json(rows)
 });
 
 // Esta Es lo mismo que la re arriba solo que funciona para mostrar cuando acceda a esta ruta
 router.get("/register", async (req, res) => {
   const [rows] = await pool.query("SELECT * FROM glucosa");
-  res.render("index", { users: rows });
+  res.json(rows)
 });
 
 // Este me muestra una informacion concreta
 router.get("/register/:id", async (req, res) => {
   const id = req.params.id;
   const [rows] = await pool.query("SELECT * FROM glucosa WHERE id = ?", [id]);
-  res.render("index", { users: rows });
+  res.json(rows)
 });
 
 // Esta crea una informacion de la glucosa
@@ -36,7 +36,7 @@ router.post("/register", async (req, res) => {
     [fecha, nivelazucar1, medicamento1, nivelazucar2, medicamento2]
   );
 
-  res.render("index", { users: rows });
+  res.status(204)
 });
 
 // Esta puede modificar campos
@@ -49,7 +49,7 @@ router.patch("/register/:id", async (req, res) => {
     "UPDATE glucosa SET fecha = IFNULL(?, fecha), nivelazucar1 = IFNULL(?, nivelazucar1), medicamento1 = IFNULL(?, medicamento1), nivelazucar2 = IFNULL(?, nivelazucar2), medicamento2 = IFNULL(?, medicamento2) WHERE id = ?",
     [fecha, nivelazucar1, medicamento1, nivelazucar2, medicamento2, id]
   );
-  res.render("index", { users: rows });
+  res.status(204)
 });
 
 // Esta elimina campos
