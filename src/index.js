@@ -5,6 +5,7 @@ import 'ejs'
 import indexRouter from './routes/index.routes.js'
 import { fileURLToPath } from 'url'
 import { PORT } from './config.js'
+import cors from 'cors'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,7 @@ app.set("appName", "Nivel Glucosa")
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+app.use(cors())
 
 app.use(express.json())
 app.use(morgan("dev"))
